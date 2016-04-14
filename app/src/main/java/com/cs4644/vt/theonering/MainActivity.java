@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // This is a test comment please disregard.
+
     MusicManager mm;
     TextManager tm;
     WeatherManager wm;
