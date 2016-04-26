@@ -21,28 +21,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Back"
-            android:id="@+id/btn_music_back" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Play"
-            android:id="@+id/btn_music_play" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Pause"
-            android:id="@+id/btn_music_pause" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Forw"
-            android:id="@+id/btn_music_forward" />
+            android:text="↑"
+            android:id="@+id/btn_up" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,9 +36,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Read Texts"
-            android:id="@+id/btn_read_texts" />
+            android:text="←"
+            android:id="@+id/btn_left" />
 
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="→"
+            android:id="@+id/btn_right" />
     </LinearLayout>
 
     <LinearLayout
@@ -72,8 +58,37 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Read Weather"
-            android:id="@+id/btn_read_weather" />
+            android:text="↓"
+            android:id="@+id/btn_down" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/tv_XVal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/tv_YVal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/tv_ZVal" />
     </LinearLayout>
 
 </LinearLayout>
