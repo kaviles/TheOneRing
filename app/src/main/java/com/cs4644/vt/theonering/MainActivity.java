@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     MusicManager mm;
     TextManager tm;
     WeatherManager wm;
+    private int activityState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mm = new MusicManager(this);
         tm = new TextManager(this);
         wm = new WeatherManager(this);
+        activityState = 0;
 
         findViewById(R.id.btn_up).setOnClickListener(this);
         findViewById(R.id.btn_left).setOnClickListener(this);
@@ -34,17 +36,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int i = v.getId();
 
         switch (i) {
-            case R.id.btn_left:
-                mm.skipBackMusic();
-                break;
+            //When up arrow is pressed, cycle through activities.
+            // 0 = music
+            // 1 = text
+            // 2 = weather
             case R.id.btn_up:
-                mm.playMusic();
+                if(activityState == 0)
+                    activityState = 2;
+                else
+                    activityState--;
+                break;
+
+            case R.id.btn_left:
+                if(activityState == 0)
+                    mm.skipBackMusic();
                 break;
             case R.id.btn_down:
-                mm.pauseMusic();
+                if(activityState == 0)
+                    mm.playOrPauseMusic();
+                if(activityState == 2)
+                    this.toast("Reading Todays Weather");
                 break;
             case R.id.btn_right:
-                mm.skipForwardMusic();
+                if(activityState == 0)
+                    mm.skipForwardMusic();
+                if(activityState == 1)
+                    this.toast("Reading Text Message");
+                if(activityState == 2)
+                    this.toast("Reading Tomorrows Weather");
                 break;
             default:
                 break;
