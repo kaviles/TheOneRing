@@ -52,15 +52,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_up:
                 if(activityState == 0) {
                     activityState = 2;
-                    speakSomething("Weather");
+                    speakSomething("Music");
                 }
                 else if (activityState == 1) {
                     activityState--;
-                    speakSomething("Music");
+                    speakSomething("Text Messages");
                 }
                 else if (activityState == 2){
                     activityState--;
-                    speakSomething("Text Messages");
+                    speakSomething("Weather");
                 }
 
                 break;
@@ -73,13 +73,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(activityState == 0)
                     mm.playOrPauseMusic();
                 if(activityState == 2)
-                    this.toast("Reading Todays Weather");
+                    this.toast("Reading Today's Weather");
                 break;
             case R.id.btn_right:
                 if(activityState == 0)
                     mm.skipForwardMusic();
                 if(activityState == 1)
-                    this.toast("Reading Text Message");
+                    tm.readTexts();
                 if(activityState == 2)
                     this.toast("Reading Tomorrows Weather");
                 break;
