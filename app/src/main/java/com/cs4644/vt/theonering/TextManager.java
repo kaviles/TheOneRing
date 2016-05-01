@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class TextManager {
 
-    MainActivity m;
+    ControllerActivity ca;
 
     String text1 = "From David: can you pick up the pizzas from dominos";
     String text2 = "From Bob: when does the movie start?";
@@ -21,15 +21,15 @@ public class TextManager {
     Random rand;
 
 
-    public TextManager(MainActivity mainActivity) {
-        m = mainActivity;
+    public TextManager(ControllerActivity controllerActivity) {
+        ca = controllerActivity;
 
         rand = new Random();
 
     }
 
     public String readTexts() {
-        m.toast("Reading Texts");
+        Utils.toast(ca, "Reading Texts");
 
         return readText(rand.nextInt(9));
     }

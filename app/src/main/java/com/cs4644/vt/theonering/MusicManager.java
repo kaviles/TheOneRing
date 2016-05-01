@@ -7,17 +7,17 @@ import android.media.MediaPlayer;
  */
 public class MusicManager {
 
-    MainActivity m;
+    ControllerActivity ca;
 
     MediaPlayer[] mediaPlayer;
     int songCount;
     boolean isPlaying;
 
-    public MusicManager(MainActivity mainActivity) {
-        m = mainActivity;
+    public MusicManager(ControllerActivity controllerActivity) {
+        ca = controllerActivity;
 
         mediaPlayer = new MediaPlayer[3];
-        mediaPlayer[0] = MediaPlayer.create(mainActivity, R.raw.song1);
+        mediaPlayer[0] = MediaPlayer.create(ca, R.raw.song1);
         songCount = 0;
         isPlaying = false;
     }
@@ -26,18 +26,25 @@ public class MusicManager {
         if(!isPlaying) {
             mediaPlayer[songCount].start();
             isPlaying = true;
-            m.toast("Playing Music");
+            Utils.toast(ca, "Playing Music");
         }
         else {
             mediaPlayer[songCount].pause();
             isPlaying = false;
-            m.toast("Pausing Music");
+            Utils.toast(ca, "Pausing Music");
         }
 
     }
 
+    public void pauseMusic() {
+        if (isPlaying) {
+            mediaPlayer[songCount].pause();
+            isPlaying = false;
+        }
+    }
+
     public void skipBackMusic() {
-        m.toast("Skipping Back Music");
+        Utils.toast(ca, "Skipping Back Music");
 
         mediaPlayer[songCount].stop();
         mediaPlayer[songCount].release();
@@ -46,13 +53,13 @@ public class MusicManager {
 
         if (songCount == 0) {
             songCount = 2;
-            mediaPlayer[songCount] = MediaPlayer.create(m, R.raw.song3);
+            mediaPlayer[songCount] = MediaPlayer.create(ca, R.raw.song3);
         } else if (songCount == 2) {
             songCount--;
-            mediaPlayer[songCount] = MediaPlayer.create(m, R.raw.song2);
+            mediaPlayer[songCount] = MediaPlayer.create(ca, R.raw.song2);
         } else if (songCount == 1) {
             songCount--;
-            mediaPlayer[songCount] = MediaPlayer.create(m, R.raw.song1);
+            mediaPlayer[songCount] = MediaPlayer.create(ca, R.raw.song1);
         }
 
         mediaPlayer[songCount].start();
@@ -60,23 +67,22 @@ public class MusicManager {
     }
 
     public void skipForwardMusic() {
-        m.toast("Skipping Forward Music");
+        Utils.toast(ca, "Skipping Forward Music");
 
         mediaPlayer[songCount].stop();
         mediaPlayer[songCount].release();
         mediaPlayer[songCount] = null;
 
-
         //this.onDestroy();
         if (songCount == 0) {
             songCount++;
-            mediaPlayer[songCount] = MediaPlayer.create(m, R.raw.song2);
+            mediaPlayer[songCount] = MediaPlayer.create(ca, R.raw.song2);
         } else if (songCount == 1) {
             songCount++;
-            mediaPlayer[songCount] = MediaPlayer.create(m, R.raw.song3);
+            mediaPlayer[songCount] = MediaPlayer.create(ca, R.raw.song3);
         } else {
             songCount = 0;
-            mediaPlayer[songCount] = MediaPlayer.create(m, R.raw.song1);
+            mediaPlayer[songCount] = MediaPlayer.create(ca, R.raw.song1);
         }
 
         mediaPlayer[songCount].start();

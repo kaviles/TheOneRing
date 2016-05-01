@@ -5,13 +5,13 @@ package com.cs4644.vt.theonering;
  */
 public class WeatherManager {
 
-    MainActivity m;
+    ControllerActivity ca;
     private String todayWeather;
     private String tmrwWeather;
 
-    public WeatherManager(MainActivity mainActivity) {
+    public WeatherManager(ControllerActivity mainActivity) {
 
-        m = mainActivity;
+        ca = mainActivity;
         todayWeather = "Today will have a high of 64 and lows in the fifties, " +
                 "It will be cloudy with a 50 percent chance of rain during the evening";
         tmrwWeather = "Tomorrows weather will have a high of 69 and lows in the fifties" +
@@ -19,7 +19,7 @@ public class WeatherManager {
     }
 
     public void readWeather() {
-        m.toast("Reading Weather");
+        Utils.toast(ca, "Reading Weather");
     }
 
     public String getTodaysWeather() {
